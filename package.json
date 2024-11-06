@@ -10,6 +10,10 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@types/jquery": "^3.5.30"
+    "@types/jquery": "^3.5.30",
+    "@types/pixelmatch": "^5.2.6"
+  },
+  "dependencies": {
+    "pixelmatch": "^6.0.0"
   }
 }

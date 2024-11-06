@@ -4,18 +4,65 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Webcam Stream</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+      }
+      video {
+        width: 640px;
+        height: 480px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      button {
+        border-radius: 10px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+      canvas {
+        width: 640px;
+        height: 480px;
+        border-radius: 10px;
+        transform: scaleX(-1);
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <video id="videoElement" autoplay></video>
+    <video id="videoElement" autoplay ></video>
     <button id="toggleStream">Start/Stop Stream</button>
-    <button id="takePicture">Take Picture</button>
-    <button id="grayscalePicture">Grayscale Picture</button>
-    <canvas id="canvas"> </canvas>
-    <div class="output">
-      <img id="photo" alt="The screen capture will appear in this box." />
+    <div style="display:flex;flex-direction:row;align-items:center;">
+      <img id="picture"src="../pictures/Picture1.jpg" alt="Description of the image" style="width:640px;height:480px;border-radius:10px;margin:20px;">
+      <div id="imageMetadata">
+        <p><strong>Image Name:</strong> <span id="imageName"></span></p>
+        <p><strong>Image Width:</strong> <span id="imageWidth"></span></p>
+        <p><strong>Image Height:</strong> <span id="imageHeight"></span></p>
+        <p><strong>Image Type:</strong> <span id="imageType"></span></p>
+      </div>
     </div>
-    
+    <script>
+      const image = document.getElementById("picture");
+        image.onload = () => {
+        const imageName = image.getAttribute("src").split("/").pop();
+        const imageWidth = image.width;
+        const imageHeight = image.height;
+        const imageType = image.getAttribute("src").split(".").pop();
+        document.getElementById("imageName").innerText = imageName;
+        document.getElementById("imageWidth").innerText = imageWidth;
+        document.getElementById("imageHeight").innerText = imageHeight;
+        document.getElementById("imageType").innerText = imageType;
+      }
+
+    </script>
 
     <script src="app.js"></script>
+    
   </body>
 </html>
+
