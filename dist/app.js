@@ -205,7 +205,7 @@ function deletePictures() {
 }
 function switchImages(order) {
     const picture = document.getElementById("picture");
-    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg"];
+    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg", "../pictures/Picture4.jpg", "../pictures/Picture5.jpg"];
     if (order == "previous") {
         currentPicture--;
         if (currentPicture < 0) {

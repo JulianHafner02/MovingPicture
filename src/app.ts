@@ -211,7 +211,7 @@ function deletePictures(): void {
 function switchImages(order: string): void {
 
     const picture = document.getElementById("picture") as HTMLImageElement;
-    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg"];
+    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg", "../pictures/Picture4.jpg", "../pictures/Picture5.jpg"];
     if (order == "previous") {
         
         currentPicture--;
