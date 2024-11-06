@@ -163,11 +163,11 @@ function analyseColors(): void {
                 const leftCorner: ImageData = diffCtx.getImageData(0, 0, diffCanvas.width / 4, diffCanvas.height / 4);
                 let leftCornerSum: number = 0;
                 for (let i = 0; i < leftCorner.data.length; i += 4) {
-                    leftCornerSum += leftCorner.data[i] + leftCorner.data[i + 1] + leftCorner.data[i + 2];
+                    leftCornerSum += leftCorner.data[i];
                 }
                 const leftCornerAvg: number = leftCornerSum / (leftCorner.data.length / 4);
                 console.log(leftCornerAvg);
-                if (leftCornerAvg > 55) {
+                if (leftCornerAvg > 20) {
                     if (leftOverlay != null) {
                         leftOverlay.style.border = "2px solid green";
                         switchImages("previous");
@@ -181,11 +181,11 @@ function analyseColors(): void {
                 const rightCorner: ImageData = diffCtx.getImageData(diffCanvas.width - diffCanvas.width / 4, 0, diffCanvas.width / 4, diffCanvas.height / 4);
                 let rightCornerSum: number = 0;
                 for (let i = 0; i < rightCorner.data.length; i += 4) {
-                    rightCornerSum += rightCorner.data[i] + rightCorner.data[i + 1] + rightCorner.data[i + 2];
+                    rightCornerSum += rightCorner.data[i];
                 }
                 const rightCornerAvg: number = rightCornerSum / (rightCorner.data.length / 4);
                 console.log(rightCornerAvg);
-                if (rightCornerAvg > 55) {
+                if (rightCornerAvg > 20) {
                     if (rightOverlay != null) {
                         rightOverlay.style.border = "2px solid green";
                         switchImages("next");
