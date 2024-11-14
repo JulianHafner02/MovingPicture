@@ -5,6 +5,8 @@ const toggleStreamButton = document.getElementById("toggleStream") as HTMLButton
 let stream: MediaStream | null = null;
 let startClock: Boolean = false;
 let currentPicture: number = 0;
+let rightCount: number = 0;
+let leftCount: number = 0;
 
 async function getMedia(): Promise<void> {
     try {
@@ -170,11 +172,19 @@ function analyseColors(): void {
                 if (leftCornerAvg > 20) {
                     if (leftOverlay != null) {
                         leftOverlay.style.border = "2px solid green";
-                        switchImages("previous");
+                        switchImages("next");
+                        leftCount += 1;
+                        console.log("leftcount: " + leftCount);
+                        if (leftCount > 10) {
+                            setTimeout(() => {
+                                switchImages("next");
+                            }, 250);
+                        }
                     }
                 }else{
                     if (leftOverlay != null) {
                         leftOverlay.style.border = "2px solid red";
+                        leftCount = 0;
                     }
                 }
                 
@@ -188,11 +198,19 @@ function analyseColors(): void {
                 if (rightCornerAvg > 20) {
                     if (rightOverlay != null) {
                         rightOverlay.style.border = "2px solid green";
-                        switchImages("next");
+                        switchImages("previous");
+                        rightCount += 1;
+                        console.log("rightcount: " + rightCount);
+                        if (rightCount > 10) {
+                            setTimeout(() => {
+                                switchImages("previous");
+                            }, 250);
+                        }
                     }
                 }else{
                     if (rightOverlay != null) {
                         rightOverlay.style.border = "2px solid red";
+                        rightCount = 0;
                     }
                 }
             }
@@ -211,7 +229,8 @@ function deletePictures(): void {
 function switchImages(order: string): void {
 
     const picture = document.getElementById("picture") as HTMLImageElement;
-    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg", "../pictures/Picture4.jpg", "../pictures/Picture5.jpg"];
+    const allPictureSources = ["../pictures/Picture1.jpg", "../pictures/Picture2.jpg", "../pictures/Picture3.jpg", "../pictures/Picture4.jpg", "../pictures/Picture5.jpg", 
+        "../pictures/Picture6.jpg", "../pictures/Picture7.jpg", "../pictures/Picture8.jpg", "../pictures/Picture9.jpg", "../pictures/Picture10.jpg"];
     if (order == "previous") {
         
         currentPicture--;
