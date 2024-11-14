@@ -166,7 +166,7 @@ function analyseColors() {
                 }
                 const leftCornerAvg = leftCornerSum / (leftCorner.data.length / 4);
                 console.log(leftCornerAvg);
-                if (leftCornerAvg > 20) {
+                if (leftCornerAvg > 30) {
                     if (leftOverlay != null) {
                         leftOverlay.style.border = "2px solid green";
                         switchImages("next");
@@ -192,7 +192,7 @@ function analyseColors() {
                 }
                 const rightCornerAvg = rightCornerSum / (rightCorner.data.length / 4);
                 console.log(rightCornerAvg);
-                if (rightCornerAvg > 20) {
+                if (rightCornerAvg > 30) {
                     if (rightOverlay != null) {
                         rightOverlay.style.border = "2px solid green";
                         switchImages("previous");
